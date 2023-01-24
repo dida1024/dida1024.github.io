@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="序言不知不觉使用了一段时间的windows又开始卡顿，当即决定回到linux的怀抱在这台电脑已经体验了ubuntu、manjaro并深入使用了一段时间，最终也是因为各种各样的原因又回到了windows 在这次的使用，c盘也逐渐满了，系统也有肉眼可见的卡顿，正好近期使用到windows中的wsl2和docker，其中docker的启动速度让我深受其扰，于是便打算一不做二不休干脆装linux算了 为什">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记第n次从windows切换到archlinux发行版">
+<meta property="og:url" content="http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/index.html">
+<meta property="og:site_name" content="滴沥哒啦">
+<meta property="og:description" content="序言不知不觉使用了一段时间的windows又开始卡顿，当即决定回到linux的怀抱在这台电脑已经体验了ubuntu、manjaro并深入使用了一段时间，最终也是因为各种各样的原因又回到了windows 在这次的使用，c盘也逐渐满了，系统也有肉眼可见的卡顿，正好近期使用到windows中的wsl2和docker，其中docker的启动速度让我深受其扰，于是便打算一不做二不休干脆装linux算了 为什">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/idea.png">
+<meta property="og:image" content="http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/idea02.png">
+<meta property="article:published_time" content="2023-01-24T23:23:19.000Z">
+<meta property="article:modified_time" content="2023-01-24T17:00:57.707Z">
+<meta property="article:author" content="dida">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="arch">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/idea.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>记第n次从windows切换到archlinux发行版</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2023/01/16/%E9%BB%91%E9%A9%AC%E7%82%B9%E8%AF%84-redis%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE-%E4%B8%AD%E7%9A%84%E7%9C%BC%E5%89%8D%E4%B8%80%E4%BA%AE-0-%E5%AF%BC%E5%85%A5%E7%AF%87/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/&text=记第n次从windows切换到archlinux发行版"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/&title=记第n次从windows切换到archlinux发行版"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/&is_video=false&description=记第n次从windows切换到archlinux发行版"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=记第n次从windows切换到archlinux发行版&body=Check out this article: http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/&title=记第n次从windows切换到archlinux发行版"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/&title=记第n次从windows切换到archlinux发行版"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/&title=记第n次从windows切换到archlinux发行版"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/&title=记第n次从windows切换到archlinux发行版"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/&name=记第n次从windows切换到archlinux发行版&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/&t=记第n次从windows切换到archlinux发行版"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%8F%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">序言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AFarch"><span class="toc-number">2.</span> <span class="toc-text">为什么是arch</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%91%E7%9A%84windows%E4%B8%8B%E6%9C%89%E4%BB%80%E4%B9%88"><span class="toc-number">3.</span> <span class="toc-text">我的windows下有什么</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8arch%E4%B8%8A%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E7%9A%84%E6%9B%BF%E4%BB%A3"><span class="toc-number">4.</span> <span class="toc-text">在arch上常用软件的替代</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#arch%E6%A1%8C%E9%9D%A2%E7%9A%84%E9%80%89%E6%8B%A9"><span class="toc-number">5.</span> <span class="toc-text">arch桌面的选择</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%87%E4%BB%BDwindows%E4%B8%8A%E7%9A%84%E5%BF%85%E8%A6%81%E6%95%B0%E6%8D%AE"><span class="toc-number">6.</span> <span class="toc-text">备份windows上的必要数据</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        记第n次从windows切换到archlinux发行版
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">dida</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-01-24T23:23:19.000Z" itemprop="datePublished">2023-01-24</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/linux/">linux</a> › <a class="category-link" href="/categories/linux/windows/">windows</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/arch/" rel="tag">arch</a>, <a class="tag-link-link" href="/tags/linux/" rel="tag">linux</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p>不知不觉使用了一段时间的windows又开始卡顿，当即决定回到linux的怀抱<br>在这台电脑已经体验了ubuntu、manjaro并深入使用了一段时间，最终也是因为各种各样的原因又回到了windows</p>
+<p>在这次的使用，c盘也逐渐满了，系统也有肉眼可见的卡顿，正好近期使用到windows中的wsl2和docker，其中docker的启动速度让我深受其扰，于是便打算一不做二不休干脆装linux算了</p>
+<h1 id="为什么是arch"><a href="#为什么是arch" class="headerlink" title="为什么是arch"></a>为什么是arch</h1><p>首先也是因为有一定经验，在台式电脑上使用了一个月左右的archlinux，先是在笔记本上使用了manjaro发行版，感觉就是香但是差点味道，可能是心理作用</p>
+<p>使用了arch之后，首先是arch Wiki，牛，就很牛</p>
+<p>至于为什么不用Ubuntu，emmmm,首先是莫名的崩溃，虽然不碍事但是不爽，还有安装软件需要导入私钥？？？</p>
+<p>然后就是pacman和aur，里面有足够日常使用的软件</p>
+<h1 id="我的windows下有什么"><a href="#我的windows下有什么" class="headerlink" title="我的windows下有什么"></a>我的windows下有什么</h1><p>如果要迁移系统首先要弄清楚在当前系统下操作的工具和在另一个系统上的代替工具</p>
+<ul>
+<li>办公<ul>
+<li>wps(处理文档类型的文件或者查看pdf)</li>
+<li>编程<ul>
+<li>idea(java项目)</li>
+<li>Dbeaver(数据库可视化工具)</li>
+<li>Another Redis Desktop(redis可视化工具)</li>
+<li>PDManer(创建数据库工具)</li>
+<li>WebStorm(前端项目)</li>
+<li>vsCode(通常编辑器使用)</li>
+<li>ApiFox(api管理软件)</li>
+</ul>
+</li>
+<li>chrome(常用浏览器)</li>
+<li>微信(需求性不高)</li>
+<li>Utools(常用工具，用于打开软件及翻译截图)</li>
+<li>Clash(看看世界)</li>
+<li>Telegram(摸鱼的时候看)</li>
+<li>网易云音乐(常用音乐播放器)</li>
+<li>FDM(常用下载器)</li>
+<li>potplayer(视频播放器)</li>
+</ul>
+</li>
+<li>游戏<ul>
+<li>MC(唯一的经常可能会打开的游戏)</li>
+</ul>
+</li>
+<li>服务<ul>
+<li>mysql</li>
+<li>docker<ul>
+<li>redis</li>
+<li>rabbitmq</li>
+</ul>
+</li>
+<li>java</li>
+</ul>
+</li>
+</ul>
+<p>我个人的打开电脑的大部分时间花费在使用浏览器和编程上，所以对于平台反而没有强依赖性</p>
+<p>服务在linux上只会运行的更顺畅</p>
+<h1 id="在arch上常用软件的替代"><a href="#在arch上常用软件的替代" class="headerlink" title="在arch上常用软件的替代"></a>在arch上常用软件的替代</h1><ul>
+<li>办公<ul>
+<li>视频播放器<ul>
+<li>vlc(虽然它很好用但是我经常感觉用的没有potplayer舒服)</li>
+</ul>
+</li>
+<li>网易云音乐<ul>
+<li>选择第三方的播放器(官方的虽然bug不多也好解决，但是更新慢)</li>
+</ul>
+</li>
+<li>utools(暂时没找到代替的，官方的utools在linux下呼唤出来总是很别扭)</li>
+<li>微信(有解决方法但是有bug，暂时不考虑在笔记本上登陆微信，可以考虑qq，刚出的qq官方版本)</li>
+</ul>
+</li>
+<li>游戏<ul>
+<li>有mc，但是没有windows稳定</li>
+</ul>
+</li>
+</ul>
+<h1 id="arch桌面的选择"><a href="#arch桌面的选择" class="headerlink" title="arch桌面的选择"></a>arch桌面的选择</h1><p>linux系统的桌面可以自己选择喜欢的</p>
+<ul>
+<li>kde</li>
+<li>gnome</li>
+<li>xface</li>
+<li>i3</li>
+<li>…….</li>
+</ul>
+<p>之前都是用的gnome，这次使用kde</p>
+<h1 id="备份windows上的必要数据"><a href="#备份windows上的必要数据" class="headerlink" title="备份windows上的必要数据"></a>备份windows上的必要数据</h1><ul>
+<li>代码<ul>
+<li>直接将数据盘压缩放进移动硬盘备份所有数据</li>
+</ul>
+</li>
+<li>数据库<ul>
+<li>导出所有数据库包括数据</li>
+</ul>
+</li>
+<li>idea插件<ul>
+<li>备份所有插件名</li>
+<li><img src="/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/idea.png" alt="idea.png"><br><img src="/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/idea02.png" alt="idea02.png"></li>
+</ul>
+</li>
+<li>google插件<ul>
+<li>通过google云备份</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%8F%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">序言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AFarch"><span class="toc-number">2.</span> <span class="toc-text">为什么是arch</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%91%E7%9A%84windows%E4%B8%8B%E6%9C%89%E4%BB%80%E4%B9%88"><span class="toc-number">3.</span> <span class="toc-text">我的windows下有什么</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8arch%E4%B8%8A%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E7%9A%84%E6%9B%BF%E4%BB%A3"><span class="toc-number">4.</span> <span class="toc-text">在arch上常用软件的替代</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#arch%E6%A1%8C%E9%9D%A2%E7%9A%84%E9%80%89%E6%8B%A9"><span class="toc-number">5.</span> <span class="toc-text">arch桌面的选择</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%87%E4%BB%BDwindows%E4%B8%8A%E7%9A%84%E5%BF%85%E8%A6%81%E6%95%B0%E6%8D%AE"><span class="toc-number">6.</span> <span class="toc-text">备份windows上的必要数据</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/&text=记第n次从windows切换到archlinux发行版"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/&title=记第n次从windows切换到archlinux发行版"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/&is_video=false&description=记第n次从windows切换到archlinux发行版"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=记第n次从windows切换到archlinux发行版&body=Check out this article: http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/&title=记第n次从windows切换到archlinux发行版"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/&title=记第n次从windows切换到archlinux发行版"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/&title=记第n次从windows切换到archlinux发行版"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/&title=记第n次从windows切换到archlinux发行版"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/&name=记第n次从windows切换到archlinux发行版&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://www.didatx.cn/2023/01/24/%E8%AE%B0%E7%AC%ACn%E6%AC%A1%E4%BB%8Ewindows%E5%88%87%E6%8D%A2%E5%88%B0archlinux%E5%8F%91%E8%A1%8C%E7%89%88/&t=记第n次从windows切换到archlinux发行版"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2023
+    dida
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
